@@ -1,3 +1,5 @@
+# WARNING: Known Issue: Some repos do not sucessfuly push to GitHub when there are errors present. Resolve the errors and rerun the script.
+
 # Gitea_to_GitHub_Exporter
 This is a script that makes it easy to transfer all repositories you may have from your GItea server to GitHub
 
