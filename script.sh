@@ -15,6 +15,9 @@ PARENT_DIR=$(pwd)
 # GitHub API URL for creating repositories
 GITHUB_API_URL="https://api.github.com/user/repos"
 
+# Initialize counter
+repo_count=0
+
 # Loop through your Gitea repositories and push them to GitHub
 for repo in $(curl -s -u "$GITEA_USER:$GITEA_TOKEN" "$GITEA_URL/api/v1/user/repos" | jq -r '.[].name'); do
     # Clone the repository from Gitea using HTTPS
@@ -63,4 +66,10 @@ for repo in $(curl -s -u "$GITEA_USER:$GITEA_TOKEN" "$GITEA_URL/api/v1/user/repo
     cd "$PARENT_DIR"
 
     echo "Finished pushing $repo to GitHub."
+
+    # Increment the counter
+    ((repo_count++))
 done
+
+# Print the total number of repositories pushed
+echo "Total repositories pushed to GitHub: $repo_count"
